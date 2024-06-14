@@ -1,0 +1,29 @@
+{
+  "name": "@edward1993/ruler",
+  "version": "0.0.1",
+  "main": "./dist/index.js",
+  "files": [
+    "dist/**/*"
+  ],
+  "scripts": {
+    "docs": "npm run gen-docs-md",
+    "gen-docs-md": "typedoc --options typedoc.json",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "Edward Chopuryan",
+  "license": "MIT",
+  "description": "Intractable, customizable, lightning fast ruler component, powered by SVG",
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "typedoc": "^0.25.13",
+    "typedoc-plugin-markdown": "^4.0.3",
+    "typescript": "^5.4.5"
+  },
+  "peerDependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
+}
