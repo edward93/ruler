@@ -1,5 +1,5 @@
 import "./App.css";
-import RulerComponent from "./Ruler.Component";
+import RulerComponent from "./RulerPackage/Ruler.Component";
 
 function App() {
   return (
