@@ -1,0 +1,19 @@
+.rc-container {
+  display: grid;
+  width: 100%;
+
+
+  .rc-svg-ruler {
+    display: grid;
+
+    transform-origin: 50% 50%; /* center of rotation is set to the center of the element */
+    transform: scale(1, -1);
+    width: 100%;
+    touch-action: none;
+    height: 100%;
+
+    .rc-ruler-hash-mark {
+      /* stroke: rgba(243, 243, 243, 0.5); */
+    }
+  }
+}
