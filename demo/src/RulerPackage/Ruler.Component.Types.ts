@@ -49,12 +49,15 @@ export type MarkOptions = {
   offset: number;
   /** Height of the mark */
   height: number;
+  /** Font size of the mark label */
+  fontSize: number;
 };
 
 /** Options for all the marks */
 export type MarksOptions = {
   /** Major mark options */
   majorMark: MarkOptions;
+  /** Special mark options */
   specialMark: MarkOptions;
   /** Minor mark options */
   minorMark: MarkOptions;

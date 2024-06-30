@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import "./ruler.component.css";
 import { RulerComponentProps, RulerConfig } from "./Ruler.Component.Types";
+import MarkComponent from "./Mark.Component";
 
 /**
  * Ruler Component
@@ -39,22 +40,16 @@ const RulerComponent = (props: RulerComponentProps): JSX.Element => {
     /** Mark options */
     marksOptions: {
       /** Major mark options */
-      majorMark: { frequency: 10, height: 20, offset: 0 },
+      majorMark: { frequency: 10, height: 20, offset: 0, fontSize: 0.8 },
       /** Minor mark options */
-      minorMark: { frequency: -1, height: 7, offset: 0 },
+      minorMark: { frequency: -1, height: 7, offset: 0, fontSize: 0.4 },
       /** Special mark options */
-      specialMark: { frequency: 10, height: 15, offset: 5 },
+      specialMark: { frequency: 10, height: 15, offset: 5, fontSize: 0.7 },
     },
   };
 
-  // DEBUG: delete from final version
-  // console.log(config);
-
-  /** Space between neighboring marks */
-  // const maxSpaceBetweenMarks = 50;
-
   /** Paddings */
-  const [paddingTop, paddingRight, paddingBottom, paddingLeft] = config.padding;
+  const [, paddingRight, , paddingLeft] = config.padding;
 
   /** Available content width (after padding) */
   const svgContentWidth = config.svgWidth - (paddingLeft + paddingRight);
@@ -105,82 +100,8 @@ const RulerComponent = (props: RulerComponentProps): JSX.Element => {
   );
 };
 
-/**
- * Renders a mark based on the index
- *
- * @param props - Mark Component props
- * @returns Either Major, Minor or Special Mark
- */
-const MarkComponent = (props: { position: number; index: number; config: RulerConfig }) => {
-  // TODO: do not hard code
-  const markBaseMargin = 15;
 
-  const { index, position, config } = props;
-  const [paddingTop, paddingRight, paddingBottom, paddingLeft] = config.padding;
 
-  // marks options
-  const { majorMark, specialMark, minorMark } = config.marksOptions;
 
-  // TODO: create 3 separate components
-  if ((index - majorMark.offset) % majorMark.frequency === 0) {
-    // this is a major mark
-    return (
-      <g key={position} transform={`translate(${position}, ${paddingTop})`}>
-        <text x={0} y={10} fill="white" textAnchor="middle" fontSize="0.8rem">
-          {index}
-        </text>
-        <g transform={`translate(0, ${markBaseMargin})`}>
-          <line
-            x1={0}
-            y1={0}
-            x2={0}
-            y2={majorMark.height}
-            className="rc-ruler-hash-mark"
-            stroke={config.markingsColor}
-            strokeWidth={config.markWidth}
-          />
-        </g>
-      </g>
-    );
-  } else if ((index - specialMark.offset) % specialMark.frequency === 0) {
-    return (
-      <g key={position} transform={`translate(${position}, ${paddingTop})`}>
-        <text x={0} y={10} fill="white" textAnchor="middle" fontSize="0.5rem">
-          {index % specialMark.frequency}
-        </text>
-        <g transform={`translate(0, ${markBaseMargin})`}>
-          <line
-            x1={0}
-            y1={0}
-            x2={0}
-            y2={specialMark.height}
-            className="rc-ruler-hash-mark"
-            stroke={config.markingsColor}
-            strokeWidth={config.markWidth}
-          />
-        </g>
-      </g>
-    );
-  } else {
-    return (
-      <g key={position} transform={`translate(${position}, ${paddingTop})`}>
-        <text x={0} y={10} fill="white" textAnchor="middle" fontSize="0.3rem">
-          {index % majorMark.frequency}
-        </text>
-        <g transform={`translate(0, ${markBaseMargin})`}>
-          <line
-            x1={0}
-            y1={0}
-            x2={0}
-            y2={minorMark.height}
-            className="rc-ruler-hash-mark"
-            stroke={config.markingsColor}
-            strokeWidth={config.markWidth}
-          />
-        </g>
-      </g>
-    );
-  }
-};
 
 export default RulerComponent;
