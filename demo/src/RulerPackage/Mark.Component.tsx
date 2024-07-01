@@ -55,7 +55,7 @@ export const SpecialMarkComponent = (props: {
   return (
     <g key={position} transform={`translate(${position}, ${paddingTop})`}>
       <text x={0} y={10} fill="white" textAnchor="middle" fontSize={`${options.fontSize}rem`}>
-        {index}
+        {index % 10}
       </text>
       <g transform={`translate(0, ${markTopMargin})`}>
         <line
@@ -91,7 +91,7 @@ export const MinorMarkComponent = (props: {
   return (
     <g key={position} transform={`translate(${position}, ${paddingTop})`}>
       <text x={0} y={10} fill="white" textAnchor="middle" fontSize={`${options.fontSize}rem`}>
-        {index}
+        {index % 10}
       </text>
       <g transform={`translate(0, ${markTopMargin})`}>
         <line

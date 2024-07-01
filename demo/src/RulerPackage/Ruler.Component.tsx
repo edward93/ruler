@@ -89,19 +89,13 @@ const RulerComponent = (props: RulerComponentProps): JSX.Element => {
           <MarkComponent key={index} position={pos} index={index} config={config} />
         ))}
       </svg>
-      <>
-        {config.label && (
-          <section className="rc-ruler-label-section">
-            <p>{config.label}</p>
-          </section>
-        )}
-      </>
+      {config.label && (
+        <section className="rc-ruler-label-section">
+          <p>{config.label}</p>
+        </section>
+      )}
     </div>
   );
 };
-
-
-
-
 
 export default RulerComponent;
