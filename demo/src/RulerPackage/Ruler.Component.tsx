@@ -30,6 +30,8 @@ const RulerComponent = (props: RulerComponentProps): JSX.Element => {
 
     /** Color of the marks */
     markingsColor: markingsColor ?? "rgba(243, 243, 243, 0.5)",
+    /** Mark line top margin */
+    markTopMargin: 15,
 
     /** Width of the SVG */
     svgWidth: 1000,
@@ -53,10 +55,13 @@ const RulerComponent = (props: RulerComponentProps): JSX.Element => {
 
   /** Available content width (after padding) */
   const svgContentWidth = config.svgWidth - (paddingLeft + paddingRight);
-  /** Available content height (after padding) */
-  // const svgContentHeight = config.svgWidth - (paddingTop + paddingBottom);
 
   // TODO: move to a util folder
+  /**
+   * Calculates position of each mark in the SVG space
+   *
+   * @returns - Array of mark positions
+   */
   const calculateMarkPositions = (): number[] => {
     const positions: number[] = [];
 

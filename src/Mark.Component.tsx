@@ -11,9 +11,10 @@ export const MajorMarkComponent = (props: {
   options: MarkOptions;
   color: string;
   width: number;
-  markTopMargin: number;
 }) => {
-  const { index, position, paddingTop, options, color, width, markTopMargin } = props;
+  const { index, position, paddingTop, options, color, width } = props;
+  // TODO: do not hard code
+  const markTopMargin = 15;
 
   return (
     <g key={position} transform={`translate(${position}, ${paddingTop})`}>
@@ -46,9 +47,10 @@ export const SpecialMarkComponent = (props: {
   options: MarkOptions;
   color: string;
   width: number;
-  markTopMargin: number;
 }) => {
-  const { index, position, paddingTop, options, color, width, markTopMargin } = props;
+  const { index, position, paddingTop, options, color, width } = props;
+  // TODO: do not hard code
+  const markTopMargin = 15;
 
   return (
     <g key={position} transform={`translate(${position}, ${paddingTop})`}>
@@ -81,9 +83,10 @@ export const MinorMarkComponent = (props: {
   options: MarkOptions;
   color: string;
   width: number;
-  markTopMargin: number;
 }) => {
-  const { index, position, paddingTop, options, color, width, markTopMargin } = props;
+  const { index, position, paddingTop, options, color, width } = props;
+  // TODO: do not hard code
+  const markTopMargin = 15;
 
   return (
     <g key={position} transform={`translate(${position}, ${paddingTop})`}>
@@ -128,7 +131,6 @@ const MarkComponent = (props: { position: number; index: number; config: RulerCo
         options={majorMark}
         color={config.markingsColor}
         width={config.markWidth}
-        markTopMargin={config.markTopMargin}
       />
     );
   } else if ((index - specialMark.offset) % specialMark.frequency === 0) {
@@ -140,7 +142,6 @@ const MarkComponent = (props: { position: number; index: number; config: RulerCo
         options={specialMark}
         color={config.markingsColor}
         width={config.markWidth}
-        markTopMargin={config.markTopMargin}
       />
     );
   } else {
@@ -152,7 +153,6 @@ const MarkComponent = (props: { position: number; index: number; config: RulerCo
         options={minorMark}
         color={config.markingsColor}
         width={config.markWidth}
-        markTopMargin={config.markTopMargin}
       />
     );
   }

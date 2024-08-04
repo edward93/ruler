@@ -30,10 +30,6 @@ export type RulerConfig = {
 
   /** Color of the marks */
   markingsColor: string;
-  // TODO: top margin is valid only for one orientation, change for others
-  /** Mark line top margin */
-  markTopMargin: number;
-
 
   /** Width of the SVG */
   svgWidth: number;
